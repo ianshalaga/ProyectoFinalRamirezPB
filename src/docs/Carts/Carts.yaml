@@ -1,0 +1,255 @@
+openapi: 3.1.0
+
+info:
+  title: Carts API
+  version: 1.0.0
+  description: API for managing carts
+
+servers:
+  - url: http://localhost:8080/api
+    description: Local server
+
+paths:
+  /api/carts:
+    # GET
+    get:
+      summary: Get all carts
+      tags:
+        - Carts
+      responses:
+        "200":
+          description: A list of carts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Cart"
+    # POST
+    post:
+      summary: Create a new cart
+      tags:
+        - Carts
+      requestBody:
+        description: Cart to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Cart"
+      responses:
+        "201":
+          description: Cart created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+
+  /api/carts/{cid}:
+    # GET
+    get:
+      summary: Get cart by ID
+      tags:
+        - Carts
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          schema:
+            type: string
+          description: The cart ID
+      responses:
+        "200":
+          description: A single cart
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        "404":
+          description: Cart not found
+    # PUT
+    put:
+      summary: Update a cart
+      tags:
+        - Carts
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          schema:
+            type: string
+          description: The cart ID
+      requestBody:
+        description: Cart to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Cart"
+      responses:
+        "200":
+          description: Cart updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        "404":
+          description: Cart not found
+    # DELETE
+    delete:
+      summary: Clear a cart
+      tags:
+        - Carts
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          schema:
+            type: string
+          description: The cart ID
+      responses:
+        "200":
+          description: Cart cleared
+        "404":
+          description: Cart not found
+
+  /api/carts/{cid}/products/{pid}:
+    # POST
+    post:
+      summary: Add a product to a cart
+      tags:
+        - Carts
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          schema:
+            type: string
+          description: The cart ID
+        - in: path
+          name: pid
+          required: true
+          schema:
+            type: string
+          description: The product ID
+      responses:
+        "200":
+          description: Product added to cart
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        "403":
+          description: Unauthorized
+        "404":
+          description: Cart or product not found
+    # PUT
+    put:
+      summary: Update product quantity in a cart
+      tags:
+        - Carts
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          schema:
+            type: string
+          description: The cart ID
+        - in: path
+          name: pid
+          required: true
+          schema:
+            type: string
+          description: The product ID
+      requestBody:
+        description: Quantity to update
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quantity:
+                  type: integer
+                  description: Quantity of the product
+      responses:
+        "200":
+          description: Product quantity updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        "404":
+          description: Cart or product not found
+    # DELETE
+    delete:
+      summary: Remove a product from a cart
+      tags:
+        - Carts
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          schema:
+            type: string
+          description: The cart ID
+        - in: path
+          name: pid
+          required: true
+          schema:
+            type: string
+          description: The product ID
+      responses:
+        "200":
+          description: Product removed from cart
+        "404":
+          description: Cart or product not found
+
+  /api/carts/{cid}/purchase:
+    # POST
+    post:
+      summary: Purchase the cart
+      tags:
+        - Carts
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          schema:
+            type: string
+          description: The cart ID
+      responses:
+        "200":
+          description: Cart purchased
+        "404":
+          description: Cart not found
+
+components:
+  schemas:
+    Cart:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: The cart ID
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              product:
+                type: string
+                description: The product ID
+              quantity:
+                type: integer
+                description: Quantity of the product
+      required:
+        - products
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: session

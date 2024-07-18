@@ -1,0 +1,177 @@
+openapi: 3.1.0
+
+info:
+  title: Products API
+  version: 1.0.0
+  description: API for managing products
+
+servers:
+  - url: http://localhost:8080/api
+    description: Local server
+
+paths:
+  /api/products:
+    # GET
+    get:
+      summary: Get all products
+      tags:
+        - Products
+      responses:
+        "200":
+          description: A list of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+    # POST
+    post:
+      summary: Create a new product
+      tags:
+        - Products
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Product to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        "201":
+          description: Product created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "403":
+          description: Unauthorized
+
+  /api/products/{pid}:
+    # GET
+    get:
+      summary: Get product by ID
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          schema:
+            type: string
+          description: The product ID
+      responses:
+        "200":
+          description: A single product
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "404":
+          description: Product not found
+    # PUT
+    put:
+      summary: Update a product
+      tags:
+        - Products
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          schema:
+            type: string
+          description: The product ID
+      requestBody:
+        description: Product to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        "200":
+          description: Product updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "403":
+          description: Unauthorized
+        "404":
+          description: Product not found
+    # DELETE
+    delete:
+      summary: Delete a product
+      tags:
+        - Products
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          schema:
+            type: string
+          description: The product ID
+      responses:
+        "200":
+          description: Product deleted
+        "403":
+          description: Unauthorized
+        "404":
+          description: Product not found
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: The product ID
+        title:
+          type: string
+          description: The product title
+        description:
+          type: string
+          description: The product description
+        code:
+          type: string
+          description: The product code
+        price:
+          type: number
+          description: The product price
+        stock:
+          type: number
+          description: The available stock
+        category:
+          type: string
+          description: The product category
+        status:
+          type: boolean
+          description: The product status
+        thumbnail:
+          type: array
+          items:
+            type: string
+          description: List of product image URLs
+        owner:
+          type: string
+          description: The product owner
+      required:
+        - title
+        - description
+        - code
+        - price
+        - stock
+        - category
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: session
