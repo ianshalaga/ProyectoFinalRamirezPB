@@ -3,7 +3,9 @@ import ErrorHandler from "../utils/ErrorHandler";
 import errorTypes from "../utils/errorTypes";
 
 const numberSchema = z.object({
-  quantity: z.number(),
+  quantity: z
+    .number()
+    .min(0, { message: "Quantity must be a non-negative number" }),
 });
 
 function validateNumber(data: any): number {
@@ -13,9 +15,9 @@ function validateNumber(data: any): number {
   } else {
     throw ErrorHandler.customError(
       "Number validation error",
-      "Invalid number",
+      validationResult.error.errors[0]?.message || "Invalid number",
       errorTypes.ERROR_INVALID_ARGUMENTS,
-      `Number was spected. Recieved: ${typeof data.quantity}`
+      `Number was expected. Received: ${typeof data.quantity}`
     );
   }
 }
