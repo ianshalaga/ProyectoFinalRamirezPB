@@ -1,35 +1,27 @@
-# Desafio15RamirezPB-TS
+# ProyectoFinalRamirezPB
 
-Quinceavo desafío entregable del curso de Programación Backend de CoderHouse.
+Proyecto final del curso de Programación Backend de CoderHouse.
 
 ## Consigna
 
-Con base en el proyecto que venimos desarrollando, toca solidificar algunos procesos.
+- Desde el **router** de **/api/users**, crear dos rutas:
 
-- [x] Mover la ruta suelta **/api/users/premium/:uid** a un **router** específico para usuarios en **/api/users/**.
+  - **GET /** deberá obtener todos los usuarios. Este sólo debe devolver los datos principales como _nombre_, _correo_, _tipo de cuenta_ (_rol_)
 
-- [x] Modificar el modelo de **User** para que cuente con una nueva propiedad **documents** el cual será un **array** que contenga los objetos con las siguientes propiedades (no es necesario crear un nuevo modelo de **Mongoose** para este):
+  - **DELETE /** deberá limpiar a todos los usuarios que no hayan tenido conexión en los últimos 2 días. Deberá enviarse un correo indicando al usuario que su cuenta ha sido eliminada por inactividad.
 
-  - **name**: _String_ (Nombre del documento).
-  - **reference**: _String_ (enlace al documento).
+- Crear una vista para poder visualizar, modificar el rol y eliminar un usuario. Esta vista únicamente será accesible para el administrador del ecommerce.
 
-- [x] Además, agregar una propiedad al usuario llamada **last_connection**, la cual deberá modificarse cada vez que el usuario realice un proceso de **login** y **logout**.
+- Modificar el **endpoint** que elimina productos, para que, en caso de que el producto pertenezca a un usuario **premium**, le envíe un correo indicándole que el producto fue eliminado.
 
-- [x] Crear un **endpoint** en el **router** de usuarios **api/users/:uid/documents** con el método **POST** que permita subir uno o múltiples archivos. Utilizar el **middleware** de **Multer** para poder recibir los documentos que se carguen y actualizar en el usuario su **status** para hacer saber que ya subió algún documento en particular.
+- Finalizar las vistas pendientes para la realización de flujo completo de compra. No es necesario tener una estructura específica de vistas, solo las que tú consideres necesarias para poder llevar a cabo el proceso de compra. No es necesario desarrollar vistas para módulos que no influyan en el proceso de compra (como vistas de usuarios **premium** para crear productos, o vistas de panel de **admin** para **updates** de productos, etc).
 
-- [x] El **middleware** de **multer** deberá estar modificado para que pueda guardar en diferentes carpetas los diferentes archivos que se suban. Si se sube una imagen de perfil, deberá guardarlo en una carpeta **profiles**, en caso de recibir la imagen de un producto, deberá guardarlo en una carpeta **products**, mientras que ahora al cargar un documento, multer los guardará en una carpeta **documents**.
-
-- [x] Modificar el **endpoint** **/api/users/premium/:uid** para que sólo actualice al usuario a **premium** si ya ha cargado los siguientes documentos:
-
-  - Identificación.
-  - Comprobante de domicilio.
-  - Comprobante de estado de cuenta.
-
-- [x] En caso de llamar al **endpoint**, si no se ha terminado de cargar la documentación, devolver un error indicando que el usuario no ha terminado de procesar su documentación (solo si quiere pasar de **user** a **premium**, no al revés).
+- Realizar el despliegue de tu aplicativo en la plataforma de tu elección (preferentemente **Railway.app**, pues es la abarcada en el curso) y corroborar que se puede llevar a cabo un proceso de compra completo.
 
 ## Entrega
 
-Enlace al repositorio de **GitHub** con el proyecto completo, sin la carpeta de **node_modules**.
+- Enlace al repositorio de **GitHub** con el proyecto completo, sin la carpeta de **node_modules**.
+- Enlace del proyecto desplegado.
 
 ## dependencies
 
