@@ -28,5 +28,6 @@ usersRouter.put("/create-new-password", userController.createNewPasswordUser);
 
 /** DELETE ENPOINTS */
 usersRouter.delete("/:uid/documents", userController.deleteDocumentsByIdUser);
+usersRouter.delete("/", userController.clearInactiveUsers);
 
 export default usersRouter;

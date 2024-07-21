@@ -13,6 +13,23 @@ import ApiUsersDTO from "../dao/dto/apiUsers.dto";
 class UserController {
   constructor() {}
 
+  /** CREATE */
+
+  /** READ */
+
+  // @@@@
+  async getAllUsers(req: Request, res: Response) {
+    try {
+      const dbUsers: DbUser[] = await userService.getAllUsers();
+      const users = new ApiUsersDTO(dbUsers);
+      res.status(200).json(users);
+    } catch (error) {
+      res.json(failureStatus(error.message));
+    }
+  }
+
+  /** UPDATE */
+
   // @@@@
   async updateUserRolById(req: Request, res: Response) {
     try {
@@ -52,33 +69,12 @@ class UserController {
   }
 
   // @@@@
-  async resetPasswordUser(req: Request, res: Response) {
-    try {
-      const { email } = req.body;
-      const { token, expires } = generatePasswordResetToken();
-      await userService.updateUserTokenByEmail(email, token, expires);
-      await mailService.googleMailService(
-        email,
-        password.subject,
-        `<a href="http://localhost:${config.port}/create-new-password?token=${token}"><button>Recuperar contraseña</button></a>`
-      );
-      res.status(200).json(successStatus);
-    } catch (error) {
-      res.json(failureStatus(error.message));
-    }
-  }
-
-  // @@@@
   async createNewPasswordUser(req: Request, res: Response) {
     try {
       const { password } = req.body;
       const token: string = req.query.token as string;
       const dbUser: DbUser = await userService.getUserByToken(token);
       if (!dbUser || dbUser.resetTokenExpires < Date.now()) {
-        // req.logger.error("Token is invalid or has expired.");
-        // return res
-        //   .status(400)
-        //   .json({ message: "Token is invalid or has expired." });
         res.render("resetPassword", {
           title: "Reset Password",
           style: "app.css",
@@ -146,6 +142,25 @@ class UserController {
   }
 
   // @@@@
+  async resetPasswordUser(req: Request, res: Response) {
+    try {
+      const { email } = req.body;
+      const { token, expires } = generatePasswordResetToken();
+      await userService.updateUserTokenByEmail(email, token, expires);
+      await mailService.googleMailService(
+        email,
+        password.subject,
+        `<a href="http://localhost:${config.port}/create-new-password?token=${token}"><button>Recuperar contraseña</button></a>`
+      );
+      res.status(200).json(successStatus);
+    } catch (error) {
+      res.json(failureStatus(error.message));
+    }
+  }
+
+  /** DELETE */
+
+  // @@@@
   async deleteDocumentsByIdUser(req: Request, res: Response) {
     try {
       const uid: string = req.params.uid;
@@ -157,11 +172,8 @@ class UserController {
   }
 
   // @@@@
-  async getAllUsers(req: Request, res: Response) {
+  async clearInactiveUsers(req: Request, res: Response) {
     try {
-      const dbUsers: DbUser[] = await userService.getAllUsers();
-      const users = new ApiUsersDTO(dbUsers);
-      res.status(200).json(users);
     } catch (error) {
       res.json(failureStatus(error.message));
     }

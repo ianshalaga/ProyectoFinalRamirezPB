@@ -6,7 +6,7 @@ Proyecto final del curso de Programación Backend de CoderHouse.
 
 - Desde el **router** de **/api/users**, crear dos rutas:
 
-  - **GET /** deberá obtener todos los usuarios. Este sólo debe devolver los datos principales como _nombre_, _correo_, _tipo de cuenta_ (_rol_)
+  - [x] **GET /** deberá obtener todos los usuarios. Este sólo debe devolver los datos principales como _nombre_, _correo_, _tipo de cuenta_ (_rol_)
 
   - **DELETE /** deberá limpiar a todos los usuarios que no hayan tenido conexión en los últimos 2 días. Deberá enviarse un correo indicando al usuario que su cuenta ha sido eliminada por inactividad.
 
