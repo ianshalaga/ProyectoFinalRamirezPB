@@ -12,6 +12,16 @@ class UserMongodbDAO implements UserDAO {
   constructor() {}
 
   // @@@@
+  async getAll(): Promise<DbUser[]> {
+    try {
+      const dbUsers: DbUser[] = await usersModel.find();
+      return dbUsers;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // @@@@
   async getByEmail(email: string): Promise<DbUser> {
     try {
       const DbUser: DbUser = await usersModel.findOne({ email: email });

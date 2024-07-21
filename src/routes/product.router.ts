@@ -4,6 +4,8 @@ import endpointAuth from "../middlewares/endpointAuth";
 
 const productsRouter: Router = Router();
 
+/** ENDPOINT: /api/products */
+
 /** GET ENDPOINTS */
 productsRouter.get("/", productController.getAllProducts);
 productsRouter.get("/:pid", productController.getProductById);

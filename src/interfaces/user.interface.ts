@@ -25,6 +25,7 @@ export interface DbUser extends User {
 }
 
 export interface UserDAO {
+  getAll(): Promise<DbUser[]>;
   getById(id: string): Promise<DbUser>;
   getByEmail(email: string): Promise<DbUser>;
   create(newUser: User): Promise<DbUser>;

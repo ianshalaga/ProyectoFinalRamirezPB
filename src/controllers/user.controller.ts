@@ -154,6 +154,16 @@ class UserController {
       res.json(failureStatus(error.message));
     }
   }
+
+  // @@@@
+  async getAllUsers(req: Request, res: Response) {
+    try {
+      const dbUsers: DbUser[] = await userService.getAllUsers();
+      res.status(200).json(dbUsers);
+    } catch (error) {
+      res.json(failureStatus(error.message));
+    }
+  }
 }
 
 export default new UserController();

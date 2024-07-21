@@ -5,6 +5,8 @@ import endpointAuth from "../middlewares/endpointAuth";
 
 const cartsRouter: Router = Router();
 
+/** ENDPOINT: /api/carts */
+
 /** GET ENDPOINTS */
 cartsRouter.get("/", cartController.getAllCarts);
 cartsRouter.get("/:cid", cartController.getCartById);

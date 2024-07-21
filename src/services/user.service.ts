@@ -8,6 +8,10 @@ export default class UserService {
     this.dao = dao;
   }
 
+  async getAllUsers() {
+    return await this.dao.getAll();
+  }
+
   async getUserById(id: string) {
     return await this.dao.getById(id);
   }

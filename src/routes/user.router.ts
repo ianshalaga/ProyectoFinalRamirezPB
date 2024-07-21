@@ -5,6 +5,11 @@ import { uploadFields } from "../middlewares/uploadFields";
 
 const usersRouter: Router = Router();
 
+/** ENDPOINT: /api/users */
+
+/** GET ENPOINTS */
+usersRouter.get("/", userController.getAllUsers);
+
 /** POST ENPOINTS */
 usersRouter.post(
   "/:uid/documents",

@@ -5,6 +5,8 @@ import sessionController from "../controllers/session.controller";
 
 const sessionsRouter = Router();
 
+/** ENDPOINT: /api/sessions */
+
 /** REGISTER */
 sessionsRouter.post(
   "/register",
