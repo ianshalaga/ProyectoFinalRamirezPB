@@ -8,6 +8,7 @@ import { generatePasswordResetToken } from "../utils/resetToken";
 import config from "../config/env.config";
 import { MulterFiles } from "../interfaces/file.interface";
 import fs from "fs";
+import ApiUsersDTO from "../dao/dto/apiUsers.dto";
 
 class UserController {
   constructor() {}
@@ -159,7 +160,8 @@ class UserController {
   async getAllUsers(req: Request, res: Response) {
     try {
       const dbUsers: DbUser[] = await userService.getAllUsers();
-      res.status(200).json(dbUsers);
+      const users = new ApiUsersDTO(dbUsers);
+      res.status(200).json(users);
     } catch (error) {
       res.json(failureStatus(error.message));
     }

@@ -24,6 +24,12 @@ export interface DbUser extends User {
   _id: string;
 }
 
+export interface ApiUser {
+  name: string;
+  email: string;
+  rol: string;
+}
+
 export interface UserDAO {
   getAll(): Promise<DbUser[]>;
   getById(id: string): Promise<DbUser>;
