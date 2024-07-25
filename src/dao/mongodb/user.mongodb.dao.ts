@@ -140,6 +140,15 @@ class UserMongodbDAO implements UserDAO {
       throw error;
     }
   }
+
+  // @@@@
+  async deleteUserById(id: string) {
+    try {
+      await usersModel.findByIdAndDelete(id);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default UserMongodbDAO;

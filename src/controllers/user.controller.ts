@@ -174,6 +174,26 @@ class UserController {
   // @@@@
   async clearInactiveUsers(req: Request, res: Response) {
     try {
+      const timeNowMilliseconds = new Date().getTime();
+      const twoDaysMilliseconds = 2 * 24 * 60 * 60 * 1000;
+      const dbUsers: DbUser[] = await userService.getAllUsers();
+      for (let i = 0; i < dbUsers.length; i++) {
+        if (dbUsers[i].last_connection != null) {
+          if (
+            timeNowMilliseconds -
+              new Date(dbUsers[i].last_connection).getTime() >
+            twoDaysMilliseconds
+          ) {
+            await userService.deleteUseByIdUser(dbUsers[i]._id);
+            await mailService.googleMailService(
+              dbUsers[i].email,
+              "Cuenta eliminada por inactividad",
+              "<p>Estimado usuario, su cuenta ha sido eliminada por estar inactiva por más de dos días.</p>"
+            );
+          }
+        }
+      }
+      res.status(200).json(successStatus);
     } catch (error) {
       res.json(failureStatus(error.message));
     }

@@ -8,11 +8,11 @@ Proyecto final del curso de Programación Backend de CoderHouse.
 
   - [x] **GET /** deberá obtener todos los usuarios. Este sólo debe devolver los datos principales como _nombre_, _correo_, _tipo de cuenta_ (_rol_)
 
-  - **DELETE /** deberá limpiar a todos los usuarios que no hayan tenido conexión en los últimos 2 días. Deberá enviarse un correo indicando al usuario que su cuenta ha sido eliminada por inactividad.
-
-- Crear una vista para poder visualizar, modificar el rol y eliminar un usuario. Esta vista únicamente será accesible para el administrador del ecommerce.
+  - [x] **DELETE /** deberá limpiar a todos los usuarios que no hayan tenido conexión en los últimos 2 días. Deberá enviarse un correo indicando al usuario que su cuenta ha sido eliminada por inactividad.
 
 - Modificar el **endpoint** que elimina productos, para que, en caso de que el producto pertenezca a un usuario **premium**, le envíe un correo indicándole que el producto fue eliminado.
+
+- Crear una vista para poder visualizar, modificar el rol y eliminar un usuario. Esta vista únicamente será accesible para el administrador del ecommerce.
 
 - Finalizar las vistas pendientes para la realización de flujo completo de compra. No es necesario tener una estructura específica de vistas, solo las que tú consideres necesarias para poder llevar a cabo el proceso de compra. No es necesario desarrollar vistas para módulos que no influyan en el proceso de compra (como vistas de usuarios **premium** para crear productos, o vistas de panel de **admin** para **updates** de productos, etc).
 
