@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { productService } from "../services/services";
+import { mailService, productService } from "../services/services";
 import { successStatus, failureStatus } from "../utils/statuses";
 // Interfaces
 import { QueryParams } from "../interfaces/query.interface";
@@ -103,13 +103,20 @@ class ProductController {
     try {
       const { user } = req.session;
       const pid: string = req.params.pid;
+      const dbProduct: DbProduct = await productService.getProductById(pid);
       if (user) {
-        const dbProduct: DbProduct = await productService.getProductById(pid);
         if (dbProduct.owner !== user.email) {
           return res
             .status(403)
             .json({ message: "The User doesn't own the product." });
         }
+      }
+      if (user.rol === "premium") {
+        await mailService.googleMailService(
+          user.email,
+          "Producto eliminado.",
+          `<p>Su producto: ${dbProduct.title}, ha sido eliminado</p>`
+        );
       }
       await productService.deleteProduct(pid);
       res.status(200).json(successStatus);

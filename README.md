@@ -4,13 +4,13 @@ Proyecto final del curso de Programación Backend de CoderHouse.
 
 ## Consigna
 
-- Desde el **router** de **/api/users**, crear dos rutas:
+- [x] Desde el **router** de **/api/users**, crear dos rutas:
 
   - [x] **GET /** deberá obtener todos los usuarios. Este sólo debe devolver los datos principales como _nombre_, _correo_, _tipo de cuenta_ (_rol_)
 
   - [x] **DELETE /** deberá limpiar a todos los usuarios que no hayan tenido conexión en los últimos 2 días. Deberá enviarse un correo indicando al usuario que su cuenta ha sido eliminada por inactividad.
 
-- Modificar el **endpoint** que elimina productos, para que, en caso de que el producto pertenezca a un usuario **premium**, le envíe un correo indicándole que el producto fue eliminado.
+- [x] Modificar el **endpoint** que elimina productos, para que, en caso de que el producto pertenezca a un usuario **premium**, le envíe un correo indicándole que el producto fue eliminado.
 
 - Crear una vista para poder visualizar, modificar el rol y eliminar un usuario. Esta vista únicamente será accesible para el administrador del ecommerce.
 

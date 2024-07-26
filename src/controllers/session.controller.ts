@@ -35,6 +35,17 @@ class SessionController {
 
   // @@@@
   async logout(req: Request, res: Response) {
+    // ADMIN
+    if (req.session.admin) {
+      return req.session.destroy(async (error) => {
+        if (!error) {
+          res.status(200).json(successStatus);
+        } else {
+          res.status(404).json(failureStatus(error.message));
+        }
+      });
+    }
+    // USERS
     const id: string = (
       await userService.getUserByEmail(req.session.user.email)
     )._id;
