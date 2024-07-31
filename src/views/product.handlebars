@@ -40,17 +40,13 @@
                     <p class="text-lg font-semibold text-gray-800 break-all">{{product.thumbnail}}</p>
                 </div>
             </div>
-            <div class="mt-6 flex justify-end">
-                <form action="/carts/{{cartId}}/products/{{product._id}}" method="POST">
-                    <button type="submit"
-                        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition duration-300">
-                        Add to Cart
-                    </button>
-                </form>
-            </div>
+            <button
+                class="add-to-cart-btn bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition duration-300 w-full mt-4"
+                data-product-id="{{product._id}}" data-cart-id="{{cart}}">
+                Add to Cart
+            </button>
         </div>
     </div>
 </div>
 
-{{!--
-<script src="/js/products.js"></script> --}}
+<script src="/js/product.js"></script>

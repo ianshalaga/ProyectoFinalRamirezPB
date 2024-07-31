@@ -118,6 +118,7 @@ class ViewController {
         title: "Product",
         style: "app.css",
         product: product,
+        cart: req.session.user.cart,
       });
     } catch (error) {
       res.render("failure", {
