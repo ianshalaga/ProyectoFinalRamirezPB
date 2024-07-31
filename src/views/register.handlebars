@@ -1,23 +1,41 @@
-<div class="flex flex-col">
-    <h1>Register</h1>
-    <form id="registerForm">
-        <label>Nombre</label>
-        <input name="firstName">
-        <br />
-        <label>Apellido</label>
-        <input name="lastName">
-        <br />
-        <label>Email</label>
-        <input name="email">
-        <br />
-        <label>Edad</label>
-        <input name="age">
-        <br />
-        <label>Contraseña</label>
-        <input type="password" name="password">
-        <input class="bg-red-400" type="submit">
+<div class="container mx-auto p-8 max-w-md">
+    <h1 class="text-3xl font-bold text-gray-900 mb-6 text-center">Register</h1>
+    <form id="registerForm" class="bg-white shadow-lg rounded-lg p-8 space-y-6">
+        <div class="flex flex-col">
+            <label for="firstName" class="text-sm font-medium text-gray-700">Nombre</label>
+            <input id="firstName" name="firstName" type="text" required
+                class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+        </div>
+        <div class="flex flex-col">
+            <label for="lastName" class="text-sm font-medium text-gray-700">Apellido</label>
+            <input id="lastName" name="lastName" type="text" required
+                class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+        </div>
+        <div class="flex flex-col">
+            <label for="email" class="text-sm font-medium text-gray-700">Email</label>
+            <input id="email" name="email" type="email" required
+                class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+        </div>
+        <div class="flex flex-col">
+            <label for="age" class="text-sm font-medium text-gray-700">Edad</label>
+            <input id="age" name="age" type="number" required
+                class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+        </div>
+        <div class="flex flex-col">
+            <label for="password" class="text-sm font-medium text-gray-700">Contraseña</label>
+            <input id="password" name="password" type="password" required
+                class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+        </div>
+        <button type="submit"
+            class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300">
+            Registrar
+        </button>
     </form>
-    <p>¿Ya tienes una cuenta? <a href="/login">Ingresa aquí</a></p>
+    <div class="mt-6 text-center">
+        <p class="text-sm text-gray-600">
+            ¿Ya tienes una cuenta? <a href="/login" class="text-blue-600 hover:underline">Ingresa aquí</a>
+        </p>
+    </div>
 </div>
 
 <script src="/js/register.js"></script>

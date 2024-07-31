@@ -18,5 +18,6 @@ viewsRouter.get("/profile", auth, viewController.profile);
 viewsRouter.get("/", logedin, viewController.index);
 viewsRouter.get("/reset-password", viewController.resetPassword);
 viewsRouter.get("/create-new-password", viewController.createNewPassword);
+viewsRouter.get("/users", endpointAuth(["admin"]), viewController.usersRol);
 
 export default viewsRouter;

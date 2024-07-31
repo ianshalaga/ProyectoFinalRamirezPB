@@ -1,50 +1,95 @@
-<div class="flex flex-col">
-    <h1>Products paginated</h1>
+<div class="container mx-auto p-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-8 text-center">Products Paginated</h1>
+
     {{#if admin}}
-    <p>{{admin.rol}} - {{admin.email}}</p>
+    <div class="text-center mb-8">
+        <p class="text-lg font-semibold text-gray-800">{{admin.rol}} - {{admin.email}}</p>
+    </div>
     {{else}}
-    <p>Bienvenido/a {{user.rol}} {{user.name}}, {{user.email}}, de {{user.age}} años de edad.</p>
+    <div class="text-center mb-8">
+        <p class="text-lg font-semibold text-gray-800">
+            Welcome {{user.rol}} {{user.name}}, {{user.email}}, {{user.age}} years old.
+        </p>
+    </div>
     {{/if}}
-    <ul class="flex flex-col">
+
+    <ul class="space-y-6">
         {{#each products.payload}}
-        <a href="/product/{{_id}}">
-            <li
-                class="grid grid-cols-9 overflow-x-hidden items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-                <p class="flex">Product ID: {{_id}}</p>
-                <p class="flex">Title: {{title}}</p>
-                <p class="flex">Description: {{description}}</p>
-                <p class="flex">Code: {{code}}</p>
-                <p class="flex">Price: {{price}}</p>
-                <p class="flex">Stock: {{stock}}</p>
-                <p class="flex">Category: {{category}}</p>
-                <p class="flex">Status: {{status}}</p>
-                <p class="flex">Thumbnail: {{thumbnail}}</p>
-            </li>
-        </a>
-        {{!-- Pendiente hasta definir el carro. --}}
-        <form action="/carts/{{cartId}}/products/{{_id}}" method="POST">
-            <button type="submit">Agregar al carrito</button>
-        </form>
+        <li class="bg-white shadow-lg rounded-lg p-6">
+            <a href="/product/{{_id}}" class="block hover:bg-gray-50 transition duration-300">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Product ID</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{_id}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Title</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{title}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Description</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{description}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Code</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{code}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Price</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{price}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Stock</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{stock}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Category</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{category}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Status</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{status}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Thumbnail</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{thumbnail}}</p>
+                    </div>
+                </div>
+            </a>
+            <form action="/carts/{{cartId}}/products/{{_id}}" method="POST" class="mt-4">
+                <button type="submit"
+                    class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition duration-300 w-full">
+                    Add to Cart
+                </button>
+            </form>
+        </li>
         {{/each}}
     </ul>
-    <div>
+
+    <div class="mt-8 flex justify-between items-center">
         {{#if products.hasPrevPage}}
-        <a href={{products.prevLink}}><- Anterior</a>
-                {{/if}}
+        <a href="{{products.prevLink}}"
+            class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition duration-300">
+            &lt; Previous
+        </a>
+        {{/if}}
 
-                {{products.page}}
+        <span class="text-gray-700">Page {{products.page}}</span>
 
-                {{#if products.hasNextPage}}
-                <a href={{products.nextLink}}>Siguiente -></a>
-                {{/if}}
+        {{#if products.hasNextPage}}
+        <a href="{{products.nextLink}}"
+            class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition duration-300">
+            Next &gt;
+        </a>
+        {{/if}}
     </div>
 
-    <div class="flex flex-col">
-        <form id="logoutForm">
-            <input class="bg-red-400" type="submit" value="Logout">
+    <div class="mt-8 flex justify-center">
+        <form id="logoutForm" class="flex">
+            <input type="submit"
+                class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition duration-300" value="Logout">
         </form>
     </div>
 </div>
-
 
 <script src="/js/products.js"></script>

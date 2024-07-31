@@ -1,0 +1,78 @@
+<div class="container mx-auto p-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-8 text-center">Users Management</h1>
+    <div class="flex justify-center">
+        <ul class="space-y-6 w-full max-w-4xl">
+            {{#each users}}
+            <li class="bg-white shadow-lg rounded-lg p-6 overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">ID</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{_id}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Email</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{email}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">First Name</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{firstName}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Last Name</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{lastName}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Age</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{age}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Password</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{password}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Role</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{rol}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Cart ID</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{cart}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Reset Token</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{resetToken}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Reset Token Expires</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{resetTokenExpires}}</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm text-gray-500">Last Connection</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{last_connection}}</p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <p class="text-sm text-gray-500">Documents</p>
+                    <ul class="ml-4 space-y-2">
+                        {{#each documents}}
+                        <li class="bg-gray-100 p-2 rounded-md">
+                            <p class="text-sm text-gray-700">Name: {{name}}</p>
+                            <p class="text-sm text-gray-700">Reference: {{reference}}</p>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div class="mt-6 flex justify-end space-x-4">
+                    <button
+                        class="change-rol-btn bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300"
+                        data-id="{{_id}}">Change Role</button>
+                    <button
+                        class="delete-user-btn bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition duration-300"
+                        data-id="{{_id}}">Delete User</button>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+
+<script src="/js/users.js"></script>

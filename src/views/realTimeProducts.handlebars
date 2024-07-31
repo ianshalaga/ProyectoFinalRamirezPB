@@ -1,19 +1,98 @@
-<form id="newProductForm">
-  <input type="text" name="title" placeholder="Title">
-  <input type="text" name="description" placeholder="Description">
-  <input type="text" name="code" placeholder="Code">
-  <input type="number" name="price" placeholder="Price">
-  <input type="number" name="stock" placeholder="Stock">
-  <input type="text" name="category" placeholder="Category">
-  <input type="number" name="status" placeholder="Status">
-  {{!-- <input type="number" name="Thumbnail" placeholder="Thumbnail"> --}}
-  <button type="submit">Crear Producto</button>
-</form>
+<div class="container mx-auto p-8 max-w-4xl">
+  <!-- Formulario para Crear un Producto -->
+  <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
+    <h1 class="text-2xl font-bold mb-4">Crear Producto</h1>
+    <form id="newProductForm" class="space-y-4">
+      <div class="flex flex-col">
+        <label for="title" class="text-sm font-medium text-gray-700">Title</label>
+        <input type="text" id="title" name="title" placeholder="Title"
+          class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div class="flex flex-col">
+        <label for="description" class="text-sm font-medium text-gray-700">Description</label>
+        <input type="text" id="description" name="description" placeholder="Description"
+          class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div class="flex flex-col">
+        <label for="code" class="text-sm font-medium text-gray-700">Code</label>
+        <input type="text" id="code" name="code" placeholder="Code"
+          class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div class="flex flex-col">
+        <label for="price" class="text-sm font-medium text-gray-700">Price</label>
+        <input type="number" id="price" name="price" placeholder="Price"
+          class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div class="flex flex-col">
+        <label for="stock" class="text-sm font-medium text-gray-700">Stock</label>
+        <input type="number" id="stock" name="stock" placeholder="Stock"
+          class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div class="flex flex-col">
+        <label for="category" class="text-sm font-medium text-gray-700">Category</label>
+        <input type="text" id="category" name="category" placeholder="Category"
+          class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div class="flex flex-col">
+        <label for="status" class="text-sm font-medium text-gray-700">Status</label>
+        <input type="number" id="status" name="status" placeholder="Status"
+          class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <button type="submit"
+        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">Crear
+        Producto</button>
+    </form>
+  </div>
 
-<div class="">
-    <ul class="flex flex-col" id="productsList">
-        {{!-- Products list --}}
+  <!-- Lista de Productos -->
+  <div class="bg-white shadow-lg rounded-lg p-6">
+    <h2 class="text-xl font-bold mb-4">Productos</h2>
+    <ul class="space-y-4" id="productsList">
+      <!-- Lista de productos será actualizada aquí dinámicamente -->
+      {{#each products}}
+      <li class="bg-gray-100 shadow-sm rounded-lg p-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="flex flex-col">
+            <p class="text-sm font-medium text-gray-700">Product ID</p>
+            <p class="text-lg font-semibold text-gray-800">{{_id}}</p>
+          </div>
+          <div class="flex flex-col">
+            <p class="text-sm font-medium text-gray-700">Title</p>
+            <p class="text-lg font-semibold text-gray-800">{{title}}</p>
+          </div>
+          <div class="flex flex-col">
+            <p class="text-sm font-medium text-gray-700">Description</p>
+            <p class="text-lg font-semibold text-gray-800">{{description}}</p>
+          </div>
+          <div class="flex flex-col">
+            <p class="text-sm font-medium text-gray-700">Code</p>
+            <p class="text-lg font-semibold text-gray-800">{{code}}</p>
+          </div>
+          <div class="flex flex-col">
+            <p class="text-sm font-medium text-gray-700">Price</p>
+            <p class="text-lg font-semibold text-gray-800">{{price}}</p>
+          </div>
+          <div class="flex flex-col">
+            <p class="text-sm font-medium text-gray-700">Stock</p>
+            <p class="text-lg font-semibold text-gray-800">{{stock}}</p>
+          </div>
+          <div class="flex flex-col">
+            <p class="text-sm font-medium text-gray-700">Category</p>
+            <p class="text-lg font-semibold text-gray-800">{{category}}</p>
+          </div>
+          <div class="flex flex-col">
+            <p class="text-sm font-medium text-gray-700">Status</p>
+            <p class="text-lg font-semibold text-gray-800">{{status}}</p>
+          </div>
+          <div class="flex flex-col">
+            <p class="text-sm font-medium text-gray-700">Thumbnail</p>
+            <img src="{{thumbnail}}" alt="{{title}}" class="w-32 h-32 object-cover rounded-md">
+          </div>
+        </div>
+      </li>
+      {{/each}}
     </ul>
+  </div>
 </div>
 
 <script src="/socket.io/socket.io.js"></script>

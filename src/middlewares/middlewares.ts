@@ -6,6 +6,7 @@ import MongoStore from "connect-mongo";
 import passport from "passport";
 import cors from "cors";
 import swaggerUiExpress from "swagger-ui-express";
+import path from "path";
 // Config
 import { dbURI } from "../config/mongoDb.config";
 import initializePassport from "../config/passport.config";

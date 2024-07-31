@@ -1,15 +1,56 @@
-<div class="flex flex-col">
-    <p class="flex">ID: {{product._id}}</p>
-    <p class="flex">Title: {{product.title}}</p>
-    <p class="flex">Description: {{product.description}}</p>
-    <p class="flex">Code: {{product.code}}</p>
-    <p class="flex">Price: {{product.price}}</p>
-    <p class="flex">Stock: {{product.stock}}</p>
-    <p class="flex">Category: {{product.category}}</p>
-    <p class="flex">Status: {{product.status}}</p>
-    <p class="flex">Thumbnail: {{product.thumbnail}}</p>
-    {{!-- Pendiente hasta definir el carro. --}}
-    <form action="/carts/{{cartId}}/products/{{product._id}}" method="POST">
-        <button type="submit">Agregar al carrito</button>
-    </form>
+<div class="container mx-auto p-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-8 text-center">Product Details</h1>
+    <div class="flex justify-center">
+        <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg">
+            <div class="grid grid-cols-1 gap-4">
+                <div class="flex flex-col">
+                    <p class="text-sm text-gray-500">ID</p>
+                    <p class="text-lg font-semibold text-gray-800 break-all">{{product._id}}</p>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-sm text-gray-500">Title</p>
+                    <p class="text-lg font-semibold text-gray-800 break-all">{{product.title}}</p>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-sm text-gray-500">Description</p>
+                    <p class="text-lg font-semibold text-gray-800 break-all">{{product.description}}</p>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-sm text-gray-500">Code</p>
+                    <p class="text-lg font-semibold text-gray-800 break-all">{{product.code}}</p>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-sm text-gray-500">Price</p>
+                    <p class="text-lg font-semibold text-gray-800 break-all">{{product.price}}</p>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-sm text-gray-500">Stock</p>
+                    <p class="text-lg font-semibold text-gray-800 break-all">{{product.stock}}</p>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-sm text-gray-500">Category</p>
+                    <p class="text-lg font-semibold text-gray-800 break-all">{{product.category}}</p>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-sm text-gray-500">Status</p>
+                    <p class="text-lg font-semibold text-gray-800 break-all">{{product.status}}</p>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-sm text-gray-500">Thumbnail</p>
+                    <p class="text-lg font-semibold text-gray-800 break-all">{{product.thumbnail}}</p>
+                </div>
+            </div>
+            <div class="mt-6 flex justify-end">
+                <form action="/carts/{{cartId}}/products/{{product._id}}" method="POST">
+                    <button type="submit"
+                        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition duration-300">
+                        Add to Cart
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
+{{!--
+<script src="/js/products.js"></script> --}}

@@ -184,7 +184,7 @@ class UserController {
               new Date(dbUsers[i].last_connection).getTime() >
             twoDaysMilliseconds
           ) {
-            await userService.deleteUseByIdUser(dbUsers[i]._id);
+            await userService.deleteUserByIdUser(dbUsers[i]._id);
             await mailService.googleMailService(
               dbUsers[i].email,
               "Cuenta eliminada por inactividad",
@@ -193,6 +193,17 @@ class UserController {
           }
         }
       }
+      res.status(200).json(successStatus);
+    } catch (error) {
+      res.json(failureStatus(error.message));
+    }
+  }
+
+  // @@@@
+  async deleteUserByIdUser(req: Request, res: Response) {
+    try {
+      const uid: string = req.params.uid;
+      await userService.deleteUserByIdUser(uid);
       res.status(200).json(successStatus);
     } catch (error) {
       res.json(failureStatus(error.message));

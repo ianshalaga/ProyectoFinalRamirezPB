@@ -1,6 +1,8 @@
 /** External */
 import express, { Express } from "express";
 import handlebars from "express-handlebars";
+import { allowInsecurePrototypeAccess } from "@handlebars/allow-prototype-access";
+import Handlebars from "handlebars";
 import { Server } from "socket.io";
 import socketMessages from "./websockets/socketMessages";
 
@@ -25,7 +27,12 @@ const io = new Server(httpServer);
 
 // Handlebars configuration
 app.set("views", rootPath + "/src/views"); // Sets the path where Express will look for the views of the application
-app.engine("handlebars", handlebars.engine()); // Sets up Handlebars as the template engine for Express.js. Allows to use Handlebars template files (*.handlebars).
+app.engine(
+  "handlebars",
+  handlebars.engine({
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
+  })
+); // Sets up Handlebars as the template engine for Express.js. Allows to use Handlebars template files (*.handlebars).
 app.set("view engine", "handlebars"); // Sets Handlebars to view engine for Express application
 
 app.use(middlewares); /** MIDDLEWARES */

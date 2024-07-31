@@ -3,11 +3,12 @@ import { Request, Response } from "express";
 import { productsRoute } from "../utils/routes";
 import validateQueryParams from "../validators/queryParams";
 /** Services */
-import { cartService, productService } from "../services/services";
+import { cartService, productService, userService } from "../services/services";
 // Interfaces
 import { GetProduct, DbProduct } from "../interfaces/product.interface";
 import { QueryParams } from "../interfaces/query.interface";
 import { DbCart } from "../interfaces/cart.interface";
+import { DbUser } from "../interfaces/user.interface";
 
 const PORT = config.port;
 
@@ -214,6 +215,24 @@ class ViewController {
       res.render("newPassword", {
         title: "Create New Password",
         style: "app.css",
+      });
+    } catch (error) {
+      res.render("failure", {
+        title: "Reset Password",
+        style: "app.css",
+        failureMessage: error.message,
+      });
+    }
+  }
+
+  // @@@@
+  async usersRol(req: Request, res: Response) {
+    try {
+      const dbUsers: DbUser[] = await userService.getAllUsers();
+      res.render("usersRol", {
+        title: "Users Rol",
+        style: "app.css",
+        users: dbUsers,
       });
     } catch (error) {
       res.render("failure", {

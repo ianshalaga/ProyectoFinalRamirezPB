@@ -1,7 +1,17 @@
-<div class="flex flex-col">
-    <h1>Profile</h1>
-    <p class="flex">Nombre: {{user.name}}</p>
-    <p class="flex">Email: {{user.email}}</p>
-    <p class="flex">Edad: {{user.age}}</p>
-    <p class="flex">Rol: {{user.rol}}</p>
+<div class="flex flex-col p-6 max-w-lg mx-auto bg-white shadow-lg rounded-lg">
+    <h1 class="text-3xl font-bold mb-4 text-gray-900">Profile</h1>
+    <div class="space-y-2">
+        <p class="flex items-center text-lg text-gray-700">
+            <span class="font-semibold mr-2">Nombre:</span> {{user.name}}
+        </p>
+        <p class="flex items-center text-lg text-gray-700">
+            <span class="font-semibold mr-2">Email:</span> {{user.email}}
+        </p>
+        <p class="flex items-center text-lg text-gray-700">
+            <span class="font-semibold mr-2">Edad:</span> {{user.age}}
+        </p>
+        <p class="flex items-center text-lg text-gray-700">
+            <span class="font-semibold mr-2">Rol:</span> {{user.rol}}
+        </p>
+    </div>
 </div>

@@ -1,19 +1,55 @@
-<h1>Cart ID: {{cart._id}}</h1>
-<div class="">
-    <ul class="flex flex-col">
-        {{#each cart.products}}
-        <li class="grid grid-cols-9 overflow-x-hidden items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-            <p class="flex">Product ID: {{product._id}}</p>
-            <p class="flex">Title: {{product.title}}</p>
-            <p class="flex">Description: {{product.description}}</p>
-            <p class="flex">Code: {{product.code}}</p>
-            <p class="flex">Price: {{product.price}}</p>
-            <p class="flex">Stock: {{product.stock}}</p>
-            <p class="flex">Category: {{product.category}}</p>
-            <p class="flex">Status: {{product.status}}</p>
-            <p class="flex">Thumbnail: {{product.thumbnail}}</p>
-            <p class="flex">Quantity: {{quantity}}</p>
-        </li>
-        {{/each}}
-    </ul>
+<div class="container mx-auto p-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-8 text-center">Cart ID: {{cart._id}}</h1>
+
+    <div class="bg-white shadow-lg rounded-lg p-6">
+        <ul class="space-y-6">
+            {{#each cart.products}}
+            <li class="bg-gray-50 shadow-md rounded-lg p-4 flex flex-col md:flex-row gap-4 items-center">
+                <div class="flex-shrink-0">
+                    <img src="{{product.thumbnail}}" alt="{{product.title}}" class="w-24 h-24 object-cover rounded-lg">
+                </div>
+                <div class="flex-1">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex flex-col">
+                            <p class="text-sm text-gray-500">Product ID</p>
+                            <p class="text-lg font-semibold text-gray-800 break-all">{{product._id}}</p>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-sm text-gray-500">Title</p>
+                            <p class="text-lg font-semibold text-gray-800 break-all">{{product.title}}</p>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-sm text-gray-500">Description</p>
+                            <p class="text-lg font-semibold text-gray-800 break-all">{{product.description}}</p>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-sm text-gray-500">Code</p>
+                            <p class="text-lg font-semibold text-gray-800 break-all">{{product.code}}</p>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-sm text-gray-500">Price</p>
+                            <p class="text-lg font-semibold text-gray-800 break-all">{{product.price}}</p>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-sm text-gray-500">Stock</p>
+                            <p class="text-lg font-semibold text-gray-800 break-all">{{product.stock}}</p>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-sm text-gray-500">Category</p>
+                            <p class="text-lg font-semibold text-gray-800 break-all">{{product.category}}</p>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-sm text-gray-500">Status</p>
+                            <p class="text-lg font-semibold text-gray-800 break-all">{{product.status}}</p>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-sm text-gray-500">Quantity</p>
+                            <p class="text-lg font-semibold text-gray-800 break-all">{{quantity}}</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
 </div>

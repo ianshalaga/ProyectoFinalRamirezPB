@@ -56,7 +56,7 @@ export default class UserService {
     return await this.dao.deleteDocumentsById(id);
   }
 
-  async deleteUseByIdUser(id: string) {
+  async deleteUserByIdUser(id: string) {
     return await this.dao.deleteUserById(id);
   }
 }

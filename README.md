@@ -12,7 +12,7 @@ Proyecto final del curso de Programación Backend de CoderHouse.
 
 - [x] Modificar el **endpoint** que elimina productos, para que, en caso de que el producto pertenezca a un usuario **premium**, le envíe un correo indicándole que el producto fue eliminado.
 
-- Crear una vista para poder visualizar, modificar el rol y eliminar un usuario. Esta vista únicamente será accesible para el administrador del ecommerce.
+- [x] Crear una vista para poder visualizar, modificar el rol y eliminar un usuario. Esta vista únicamente será accesible para el administrador del ecommerce.
 
 - Finalizar las vistas pendientes para la realización de flujo completo de compra. No es necesario tener una estructura específica de vistas, solo las que tú consideres necesarias para poder llevar a cabo el proceso de compra. No es necesario desarrollar vistas para módulos que no influyan en el proceso de compra (como vistas de usuarios **premium** para crear productos, o vistas de panel de **admin** para **updates** de productos, etc).
 
@@ -120,6 +120,10 @@ Proyecto final del curso de Programación Backend de CoderHouse.
 - `npm i multer`
 
 > **Multer** es un **middleware** de **Node.js** para manejar la subida de archivos. Es ampliamente utilizado en aplicaciones **Express** y otras aplicaciones **Node.js** para gestionar la recepción de archivos a través de formularios **HTTP multipart/form-data**. **Multer** proporciona una forma sencilla y eficiente de manejar archivos subidos, permitiendo almacenar estos archivos en el servidor o manipularlos antes de guardarlos.
+
+- `npm i @handlebars/allow-prototype-access`
+
+> **@handlebars/allow-prototype-access** es un módulo que se utiliza para permitir el acceso a las propiedades de prototipo en **Handlebars**, un popular motor de plantillas en **JavaScript**. Este módulo se ha creado para abordar un problema de seguridad introducido en **Handlebars v4.6.0**, donde se agregó una verificación para evitar el acceso a las propiedades de prototipo de los objetos para prevenir posibles vulnerabilidades de inyección de código.
 
 ## devDependencies
 

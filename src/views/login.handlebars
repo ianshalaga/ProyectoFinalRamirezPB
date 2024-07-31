@@ -1,20 +1,39 @@
-<div class="flex flex-col">
-    <h1>Login</h1>
-    <form id="loginForm">
-        <label>Email</label>
-        <input name="email">
-        <label>Contraseña</label>
-        <input type="password" name="password">
-
-        <input class="bg-red-400" type="submit">
-
+<div class="container mx-auto p-8 max-w-md">
+    <h1 class="text-3xl font-bold text-gray-900 mb-6 text-center">Login</h1>
+    <form id="loginForm" class="bg-white shadow-lg rounded-lg p-8 space-y-6">
+        <div class="flex flex-col">
+            <label for="email" class="text-sm font-medium text-gray-700">Email</label>
+            <input id="email" name="email" type="email" required
+                class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+        </div>
+        <div class="flex flex-col">
+            <label for="password" class="text-sm font-medium text-gray-700">Contraseña</label>
+            <input id="password" name="password" type="password" required
+                class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+        </div>
+        <button type="submit"
+            class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300">
+            Iniciar sesión
+        </button>
     </form>
-    <p>¿No estás registrado? <a href="/register">Regístrate aquí</a></p>
-    <div>
-        <a class="bg-sky-300" href="/api/sessions/github"><button>Iniciar sesión con GitHub</button></a>
+    <div class="mt-6 text-center">
+        <p class="text-sm text-gray-600">
+            ¿No estás registrado? <a href="/register" class="text-blue-600 hover:underline">Regístrate aquí</a>
+        </p>
     </div>
-    <div>
-        <a class="bg-green-300" href="/reset-password"><button>Recuperar contraseña</button></a>
+    <div class="mt-6 flex flex-col gap-4">
+        <a href="/api/sessions/github" class="block w-full">
+            <button
+                class="w-full bg-sky-500 text-white py-2 px-4 rounded-md hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 transition duration-300">
+                Iniciar sesión con GitHub
+            </button>
+        </a>
+        <a href="/reset-password" class="block w-full">
+            <button
+                class="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300">
+                Recuperar contraseña
+            </button>
+        </a>
     </div>
 </div>
 
