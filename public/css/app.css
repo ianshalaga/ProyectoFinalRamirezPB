@@ -844,6 +844,10 @@ select {
   display: block;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 .flex {
   display: flex;
 }
@@ -852,20 +856,12 @@ select {
   display: grid;
 }
 
-.h-24 {
-  height: 6rem;
-}
-
 .h-32 {
   height: 8rem;
 }
 
 .max-h-96 {
   max-height: 24rem;
-}
-
-.w-24 {
-  width: 6rem;
 }
 
 .w-32 {
@@ -894,10 +890,6 @@ select {
 
 .flex-1 {
   flex: 1 1 0%;
-}
-
-.flex-shrink-0 {
-  flex-shrink: 0;
 }
 
 .grid-cols-1 {

@@ -1,13 +1,16 @@
 <div class="container mx-auto p-8">
     <h1 class="text-3xl font-bold text-gray-900 mb-8 text-center">Cart ID: {{cart._id}}</h1>
-
+    <div class="text-center mb-4">
+        <button id="purchaseBtn"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 inline-block"
+            cart-id="{{cart._id}}">
+            Purchase
+        </button>
+    </div>
     <div class="bg-white shadow-lg rounded-lg p-6">
         <ul class="space-y-6">
             {{#each cart.products}}
             <li class="bg-gray-50 shadow-md rounded-lg p-4 flex flex-col md:flex-row gap-4 items-center">
-                <div class="flex-shrink-0">
-                    <img src="{{product.thumbnail}}" alt="{{product.title}}" class="w-24 h-24 object-cover rounded-lg">
-                </div>
                 <div class="flex-1">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="flex flex-col">
@@ -53,3 +56,5 @@
         </ul>
     </div>
 </div>
+
+<script src="/js/cart.js"></script>

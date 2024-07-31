@@ -14,7 +14,7 @@ Proyecto final del curso de Programación Backend de CoderHouse.
 
 - [x] Crear una vista para poder visualizar, modificar el rol y eliminar un usuario. Esta vista únicamente será accesible para el administrador del ecommerce.
 
-- Finalizar las vistas pendientes para la realización de flujo completo de compra. No es necesario tener una estructura específica de vistas, solo las que tú consideres necesarias para poder llevar a cabo el proceso de compra. No es necesario desarrollar vistas para módulos que no influyan en el proceso de compra (como vistas de usuarios **premium** para crear productos, o vistas de panel de **admin** para **updates** de productos, etc).
+- [x] Finalizar las vistas pendientes para la realización de flujo completo de compra. No es necesario tener una estructura específica de vistas, solo las que tú consideres necesarias para poder llevar a cabo el proceso de compra. No es necesario desarrollar vistas para módulos que no influyan en el proceso de compra (como vistas de usuarios **premium** para crear productos, o vistas de panel de **admin** para **updates** de productos, etc).
 
 - Realizar el despliegue de tu aplicativo en la plataforma de tu elección (preferentemente **Railway.app**, pues es la abarcada en el curso) y corroborar que se puede llevar a cabo un proceso de compra completo.
 

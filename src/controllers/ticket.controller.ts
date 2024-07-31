@@ -3,7 +3,7 @@ import { ticketService } from "../services/services";
 import { successStatus, failureStatus } from "../utils/statuses";
 import { Ticket } from "../interfaces/ticket.interface";
 
-class CartController {
+class TicketController {
   constructor() {}
 
   // @@@@
@@ -18,4 +18,4 @@ class CartController {
   }
 }
 
-export default new CartController();
+export default new TicketController();
