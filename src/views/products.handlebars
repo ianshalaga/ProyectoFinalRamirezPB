@@ -12,56 +12,61 @@
         </p>
     </div>
     {{/if}}
+    <div class="mt-8 flex justify-center gap-4">
+        <a href="/carts/{{user.cart}}"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
+            Cart
+        </a>
+    </div>
 
     <ul class="space-y-6">
         {{#each products.payload}}
         <li class="bg-white shadow-lg rounded-lg p-6">
-            <a href="/product/{{_id}}" class="block hover:bg-gray-50 transition duration-300">
+            <a href="/product/{{this._id}}" class="block hover:bg-gray-50 transition duration-300">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="flex flex-col">
                         <p class="text-sm text-gray-500">Product ID</p>
-                        <p class="text-lg font-semibold text-gray-800 break-all">{{_id}}</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{this._id}}</p>
                     </div>
                     <div class="flex flex-col">
                         <p class="text-sm text-gray-500">Title</p>
-                        <p class="text-lg font-semibold text-gray-800 break-all">{{title}}</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{this.title}}</p>
                     </div>
                     <div class="flex flex-col">
                         <p class="text-sm text-gray-500">Description</p>
-                        <p class="text-lg font-semibold text-gray-800 break-all">{{description}}</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{this.description}}</p>
                     </div>
                     <div class="flex flex-col">
                         <p class="text-sm text-gray-500">Code</p>
-                        <p class="text-lg font-semibold text-gray-800 break-all">{{code}}</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{this.code}}</p>
                     </div>
                     <div class="flex flex-col">
                         <p class="text-sm text-gray-500">Price</p>
-                        <p class="text-lg font-semibold text-gray-800 break-all">{{price}}</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{this.price}}</p>
                     </div>
                     <div class="flex flex-col">
                         <p class="text-sm text-gray-500">Stock</p>
-                        <p class="text-lg font-semibold text-gray-800 break-all">{{stock}}</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{this.stock}}</p>
                     </div>
                     <div class="flex flex-col">
                         <p class="text-sm text-gray-500">Category</p>
-                        <p class="text-lg font-semibold text-gray-800 break-all">{{category}}</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{this.category}}</p>
                     </div>
                     <div class="flex flex-col">
                         <p class="text-sm text-gray-500">Status</p>
-                        <p class="text-lg font-semibold text-gray-800 break-all">{{status}}</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{this.status}}</p>
                     </div>
                     <div class="flex flex-col">
                         <p class="text-sm text-gray-500">Thumbnail</p>
-                        <p class="text-lg font-semibold text-gray-800 break-all">{{thumbnail}}</p>
+                        <p class="text-lg font-semibold text-gray-800 break-all">{{this.thumbnail}}</p>
                     </div>
                 </div>
             </a>
-            <form action="/carts/{{cartId}}/products/{{_id}}" method="POST" class="mt-4">
-                <button type="submit"
-                    class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition duration-300 w-full">
-                    Add to Cart
-                </button>
-            </form>
+            <button
+                class="add-to-cart-btn bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition duration-300 w-full mt-4"
+                data-product-id="{{this._id}}" data-cart-id="{{../user.cart}}">
+                Add to Cart
+            </button>
         </li>
         {{/each}}
     </ul>
@@ -84,7 +89,7 @@
         {{/if}}
     </div>
 
-    <div class="mt-8 flex justify-center">
+    <div class="mt-8 flex justify-center gap-4">
         <form id="logoutForm" class="flex">
             <input type="submit"
                 class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition duration-300" value="Logout">
