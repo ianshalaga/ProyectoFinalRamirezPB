@@ -96,7 +96,9 @@ class UserController {
   // @@@@
   async uploadDocumentsByIdUser(req: Request, res: Response) {
     try {
-      const linkBase: string = "http://localhost:8080/uploads/";
+      // const linkBase: string = "http://localhost:8080/uploads/";
+      const linkBase: string =
+        "https://proyectofinalramirezpb-production.up.railway.app/uploads/";
 
       const uid: string = req.params.uid;
       const dbUser: DbUser = await userService.getUserById(uid);

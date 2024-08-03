@@ -7,5 +7,6 @@ export const buys = {
 
 export const password = {
   subject: "Recuperación de contraseña",
-  html: `<a href="http://localhost:${config.port}/create-new-password"><button>Recuperar contraseña</button></a>`,
+  // html: `<a href="http://localhost:${config.port}/create-new-password"><button>Recuperar contraseña</button></a>`,
+  html: `<a href="https://proyectofinalramirezpb-production.up.railway.app/create-new-password"><button>Recuperar contraseña</button></a>`,
 };

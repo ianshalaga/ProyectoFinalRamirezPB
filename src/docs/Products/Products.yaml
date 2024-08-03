@@ -6,7 +6,8 @@ info:
   description: API for managing products
 
 servers:
-  - url: http://localhost:8080/api
+  # - url: http://localhost:8080/api
+  - url: https://proyectofinalramirezpb-production.up.railway.app//api
     description: Local server
 
 paths:

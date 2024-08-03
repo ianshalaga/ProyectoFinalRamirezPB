@@ -33,7 +33,9 @@ const initializePassport = () => {
       {
         clientID: githubClientId,
         clientSecret: githubClientSecret,
-        callbackURL: "http://localhost:8080/api/sessions/githubcallback",
+        // callbackURL: "http://localhost:8080/api/sessions/githubcallback",
+        callbackURL:
+          "https://proyectofinalramirezpb-production.up.railway.app/api/sessions/githubcallback",
       },
       authController.githubLogin
     )
