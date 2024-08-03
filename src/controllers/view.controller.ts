@@ -65,11 +65,11 @@ class ViewController {
       );
       const nextLink = products.hasNextPage
         ? // ? `http://localhost:${PORT}${productsRoute}?page=${products.nextPage}&limit=${limitParsed}`
-          `https://proyectofinalramirezpb-production.up.railway.app/${productsRoute}?page=${products.nextPage}&limit=${limitParsed}`
+          `https://proyectofinalramirezpb-production.up.railway.app${productsRoute}?page=${products.nextPage}&limit=${limitParsed}`
         : "";
       const prevLink = products.hasPrevPage
         ? // ? `http://localhost:${PORT}${productsRoute}?page=${products.prevPage}&limit=${limitParsed}`
-          `https://proyectofinalramirezpb-production.up.railway.app/${productsRoute}?page=${products.prevPage}&limit=${limitParsed}`
+          `https://proyectofinalramirezpb-production.up.railway.app${productsRoute}?page=${products.prevPage}&limit=${limitParsed}`
         : "";
       const productsTemplate = {
         ...products,
