@@ -152,7 +152,8 @@ class UserController {
       await mailService.googleMailService(
         email,
         password.subject,
-        `<a href="http://localhost:${config.port}/create-new-password?token=${token}"><button>Recuperar contraseña</button></a>`
+        // `<a href="http://localhost:${config.port}/create-new-password?token=${token}"><button>Recuperar contraseña</button></a>`
+        `<a href="https://proyectofinalramirezpb-production.up.railway.app/create-new-password?token=${token}"><button>Recuperar contraseña</button></a>`
       );
       res.status(200).json(successStatus);
     } catch (error) {
