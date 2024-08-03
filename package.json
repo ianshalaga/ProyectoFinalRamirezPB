@@ -5,7 +5,8 @@
   "main": "./src/app.ts",
   "type": "module",
   "scripts": {
-    "start": "nodemon",
+    "start": "npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/app.css && tsx ./src/app.ts",
+    "dev": "nodemon",
     "test": "mocha --require tsx test/**/*.test.ts"
   },
   "keywords": [],
